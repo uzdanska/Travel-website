@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Destination, OurService
-from .serializers import DestinationSerializer, OurServiceSerializer
+from .models import Destination, OurService, ServiceDetail
+from .serializers import DestinationSerializer, OurServiceSerializer, ServiceDetailSerializer
 # Create your views here.
 
 @api_view(['GET'])
@@ -39,7 +39,7 @@ def getRoutes(request):
             'description': 'Deletes and exiting destination'
         },
         {
-            'Endpoint': '/C/',
+            'Endpoint': '/services/',
             'method': 'GET',
             'body': None,
             'description': 'Returns an array of service'
@@ -71,3 +71,11 @@ def getServices(request):
     services = OurService.objects.all()
     serializer = OurServiceSerializer(services, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def getServicesDetails(request):
+    servicesDetails = ServiceDetail.objects.all()
+    serializer = ServiceDetailSerializer(servicesDetails, many=True)
+    return Response(serializer.data)
+
+

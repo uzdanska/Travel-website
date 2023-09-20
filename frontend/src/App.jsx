@@ -3,7 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar  from './components/Navbar';
 import DestinationsListPage from './pages/DestinationsListPage';
 import Hero from './components/Hero';
-import OurService from './components/OurService'
+import OurService from './components/OurService';
+import ServiceDetails from './components/ServiceDetails';
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
           <Hero />
         </div>
         <OurService />
+        <ServiceDetails />
       </div>
     </BrowserRouter>
     //   <Navbar />
