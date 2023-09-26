@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import {styles} from '../styles';
-import {fadeIn, textVariant} from '../utils/motion';
+
+import { styles } from '../styles';
+import { fadeIn, textVariant } from '../utils/motion';
+import { SectionWrapper } from '../hoc';
 
 const ServiceCard = ({image, name, description}) => {
     return (
-        <Tilt className="w-[400px]">
+        <Tilt className="w-[350px]">
             <motion.div
                 variants={fadeIn("right", "spring", 0.5 * 1, 0.75)}
-                className='w-full border border-4 border-[#F9F9F9] p-[1px] rounded-[20px] shadow-card'
+                className='w-full p-[1px] rounded-3xl shadow-card'
                 >
                 <div
                     options={{
@@ -17,7 +19,7 @@ const ServiceCard = ({image, name, description}) => {
                         scale: 1, 
                         speed: 450
                     }}
-                    className='bg-white rounded-[20px] py-12 px-12 min-h-[280px] flex justify-evenly items-start flex-col'
+                    className='border-solid border-4 border-[#eceaea] bg-white rounded-3xl py-12 px-12 min-h-[280px] flex justify-evenly items-start flex-col'
                 >
                     <img src={'http://localhost:8000/'+ image} alt={name} className="w-16 h-16 object-contain" />
                     <h3 className="text-black text-[24px] font-bold text-center pt-5">{name}</h3>
@@ -42,17 +44,17 @@ const OurService = () => {
         setServices(data)
     }
   return (
-    <section>
+    <>
         <motion.div variants={textVariant()} className='justify-center flex cursor-pointer'>
             <h2 className={`${styles.sectionHeadText}`}>Our Service</h2>
         </motion.div>
-        <div className="mt-20 mb-20 flex flex-wrap gap-12 justify-center">
+        <div className="mt-32 mb-32 flex flex-wrap gap-12 justify-center">
             {services.map((service, index) => (
                 <ServiceCard key={service.name} index={index} {...service} />
             ))}
         </div>
-    </section>
+    </>
   )
 }
 
-export default OurService
+export default SectionWrapper(OurService, "work")

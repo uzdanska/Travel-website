@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
+
 import {styles} from '../styles';
 import {fadeIn, textVariant} from '../utils/motion';
+import { SectionWrapper } from '../hoc';
 
 const ServiceDetailsCard = ({image, name, number, index}) => {
     const adding = index % 2 === 0 ? "+" : "k+";
@@ -10,7 +12,7 @@ const ServiceDetailsCard = ({image, name, number, index}) => {
         <Tilt className="w-[210px]">
             <motion.div
                 variants={fadeIn("right", "spring", 0.5 * 1, 0.75)}
-                className='w-full border border-4 border-[#F9F9F9] p-[1px] rounded-[20px] shadow-card'
+                className='w-full p-[1px] rounded-[20px] shadow-card'
                 >
                 <div
                     options={{
@@ -44,10 +46,11 @@ const ServiceDetails = () => {
         setServicesDetails(data)
     }
   return (
-    <section className="bg-[#0058540c] flex items-center justify-center">
-        <div className="bg-map w-2/3">
-            <motion.div variants={textVariant()} className='justify-center flex cursor-pointer'>
-            <h2 className={`${styles.sectionHeadText}`}>We always try to give you<br/>
+    <>
+        <div className="">
+            <div className="bg-map">
+                <motion.div variants={textVariant()} className='justify-center flex cursor-pointer'>
+                <h2 className={`${styles.sectionHeadText}`}>We always try to give you<br/>
                 the best service</h2>
             </motion.div>
             <div className="mt-20 mb-20 flex flex-wrap gap-12 justify-center">
@@ -56,9 +59,9 @@ const ServiceDetails = () => {
                 ))}
             </div>
         </div>
-    </section>
-  
+     </div>
+    </>
   )
 }
 
-export default ServiceDetails
+export default SectionWrapper(ServiceDetails, "about")

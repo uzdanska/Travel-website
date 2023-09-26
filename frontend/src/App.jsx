@@ -9,7 +9,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="relative z-0 bg-white ">
+      <div className="relative z-0 bg-[#d4d2d285] ">
         <div className="bg-hero-pattern h-screen bg-cover bg-no-repeat bg-center">
           <Navbar/>
           <Hero />
