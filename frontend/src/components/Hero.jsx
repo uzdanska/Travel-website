@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 const Hero = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: 640 });
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative w-full h-screen mx-auto cursor-pointer">
         <div className={`${styles.paddingX} absolute inset-0 max-w-7xl mx-auto flex flex-col justify-center items-center gap-5 text-center`}>
             <p className='text-white text-[36px] sm:text-[78px] font-sans font-extrabold'>Your Imagination Is<br />Your Only Limit</p>
             <p className='text-white font-regular text-[15px] sm:text-[18px] mt-8 sm:mt-3'>We always try to make our customer Happy.
